@@ -20,7 +20,7 @@ public class Biblioteca {
      Falta
      *************************
     
-     1- Control de errores al introducir otra letra que no sea N en si esta en prestamo o no
+    
      2- Preguntar para hacer que el usuario no tenga que introducir un codigo
      sino que cada vez que se introduce un libro se vaya incrementando el codigo (cambiar String codigo por Int codigo)
     
@@ -80,9 +80,12 @@ public class Biblioteca {
         double precio = 0;
 
         for (Libro actual : misLibros) {
+            
+            
+                    
 
             precio = precio + actual.getPrecio();
-            if (actual.isEnPrestamo() == true) {
+            if (actual.isEnPrestamo()) {
                 prestado = prestado + 1;
             }
         }
@@ -109,6 +112,9 @@ public class Biblioteca {
             //podemos crear un toString en la clase que nos devuelva lo que pedimos
             //System.out.println("El libro con más páginas és:  \n" + gordo);
             System.out.println("El libro con más páginas és: " + gordo.getTitulo() + " tiene: " + gordo.getnPaginas() + " paginas");
+
+            //per imprimir les dades completes del llibre més gruixut
+            //System.out.println(gordo);
         } else {
             System.out.println("No hay libros en la biblioteca");
         }
@@ -215,20 +221,20 @@ public class Biblioteca {
         } while (precio < 0);
         String respuesta;
         boolean enPrestamo = true;
-        
-        do{
-            
-            respuesta =   EntradaDatos.pedirCadena("El libro está en prestamo (S/N)?");
-        if (respuesta.equalsIgnoreCase("S")) {
-            enPrestamo = true;
-        } else if (respuesta.equalsIgnoreCase("N")) {
-            enPrestamo = false;
-        }else{
-            System.out.println("Debes poner S o N");
-        }
-        
-        }while(!respuesta.equalsIgnoreCase("S") && !respuesta.equalsIgnoreCase("N"));
-        
+
+        do {
+
+            respuesta = EntradaDatos.pedirCadena("El libro está en prestamo (S/N)?");
+            if (respuesta.equalsIgnoreCase("S")) {
+                enPrestamo = true;
+            } else if (respuesta.equalsIgnoreCase("N")) {
+                enPrestamo = false;
+            } else {
+                System.out.println("Debes poner S o N");
+            }
+
+        } while (!respuesta.equalsIgnoreCase("S") && !respuesta.equalsIgnoreCase("N"));
+
         System.out.println("Libro añadido correctamente");
         Libro l = new Libro(codigo, titulo, autor, nPaginas, genero, precio, enPrestamo);
         return l;
