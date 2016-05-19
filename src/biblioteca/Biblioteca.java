@@ -16,14 +16,7 @@ public class Biblioteca {
      * @param args the command line arguments
      */
     /*
-     *************************
-     Falta
-     *************************
-    
-    
-     2- Preguntar para hacer que el usuario no tenga que introducir un codigo
-     sino que cada vez que se introduce un libro se vaya incrementando el codigo (cambiar String codigo por Int codigo)
-    
+     
     
     
      */
@@ -64,6 +57,9 @@ public class Biblioteca {
                     mostrarTotales(misLibros);
                     break;
                 case 6:
+                    listarLibros(misLibros);
+                    break;
+                case 7:
                     System.out.println("Vuelve pronto a por más libros");
                     break;
                 default:
@@ -71,8 +67,14 @@ public class Biblioteca {
 
             }
 
-        } while (opcion != 6);
+        } while (opcion != 7);
 
+    }
+    
+    private static void listarLibros(ArrayList<Libro> misLibros){
+        for (Libro actual : misLibros){
+            System.out.println(actual);
+        }
     }
 
     private static void mostrarTotales(ArrayList<Libro> misLibros) {
@@ -80,10 +82,7 @@ public class Biblioteca {
         double precio = 0;
 
         for (Libro actual : misLibros) {
-            
-            
-                    
-
+          
             precio = precio + actual.getPrecio();
             if (actual.isEnPrestamo()) {
                 prestado = prestado + 1;
@@ -254,6 +253,7 @@ public class Biblioteca {
         System.out.println("3. Listado de libros de un género");
         System.out.println("4. Libro con mayor numero de páginas");
         System.out.println("5. Totales");
-        System.out.println("6. Salir");
+        System.out.println("6. Listado de libros");
+        System.out.println("7. Salir");
     }
 }
